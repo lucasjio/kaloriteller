@@ -1,5 +1,6 @@
 import certifi
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
