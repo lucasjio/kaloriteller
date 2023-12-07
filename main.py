@@ -24,10 +24,11 @@ app.add_middleware(
 client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
 mydb = client["mydatabase"]
 mycol = mydb["foods"]
-food_names = []
+
 
 @app.get("/food_names")
 async def read_items():
+    food_names = []
     for x in mycol.find({},{"navn": 1, "_id": 0}):
         food_names.append(x["navn"])
     return food_names
